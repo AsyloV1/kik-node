@@ -73,3 +73,20 @@ describe('Bot construction', () => {
         assert.ifError(bot.otherKey);
     });
 });
+
+requests.post(
+    'https://api.kik.com/v1/config',
+    auth=('<username>', '<api_key>'),
+    headers={
+        'Content-Type': 'application/json'
+    },
+    data=json.dumps({
+        "webhook": "https://example.com/incoming",
+        "features": {
+            "manuallySendReadReceipts": False,
+            "receiveReadReceipts": False,
+            "receiveDeliveryReceipts": False,
+            "receiveIsTyping": False
+        }
+    })
+)
